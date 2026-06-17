@@ -1,0 +1,41 @@
+# Python virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# SQLite Database and local databases
+db/
+*.db
+*.db-journal
+*.db-wal
+research_platform.db
+
+# Logs and Storage
+logs/
+storage/
+*.log
+
+# Environment variables
+.env
+.env.local
+
+# IDE Settings
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node dependencies and build artifacts
+node_modules/
+dist/
+build/
+.eslintcache
+.vite
