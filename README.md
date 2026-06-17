@@ -1,69 +1,65 @@
-🚀 ResearchHubAI
+# 🚀 ResearchHubAI
+
+![ResearchHubAI Showcase](frontend/src/assets/hero.png)
 
 ResearchHubAI is a modern Multi-Agent AI Research Platform that combines intelligent routing, web research, document analysis, code generation, and report writing into a unified workflow. Built with LangGraph, FastAPI, Ollama, ChromaDB, and React, it enables users to conduct deep research, analyze documents, generate code, and create structured reports through a clean ChatGPT-style interface.
 
-⸻
+---
 
-✨ Features
+## ✨ Features
 
-🧠 Multi-Agent Architecture
+### 🧠 Multi-Agent Architecture
+* **Intent Router Agent**
+* **Planning Agent**
+* **Research Agent**
+* **Writer Agent**
+* **Coding Agent**
+* **Assistant Agent**
+* **Memory Context Agent**
 
-* Intent Router Agent
-* Planning Agent
-* Research Agent
-* Writer Agent
-* Coding Agent
-* Assistant Agent
-* Memory Context Agent
-
-🔍 Research & Retrieval
-
+### 🔍 Research & Retrieval
 * Real-time web search integration
 * RAG-powered document retrieval
 * ChromaDB vector storage
 * Context-aware follow-up conversations
 * Multi-source information synthesis
 
-📄 Document Intelligence
-
+### 📄 Document Intelligence
 * Upload and analyze files
 * Extract insights from documents
 * Detect inconsistencies and contradictions
 * Generate summaries and reports
 * Persistent session memory
 
-💻 Code Generation
-
+### 💻 Code Generation
 * Generate production-ready code
 * Explain code logic
 * Refactor existing implementations
 * Debug and optimize solutions
 
-⚡ Real-Time Experience
-
+### ⚡ Real-Time Experience
 * Live token streaming
 * WebSocket updates
 * Progress tracking
 * Agent execution monitoring
 
-📊 Report Export
-
+### 📊 Report Export
 * Markdown Export
 * PDF Export
 * DOCX Export
 * JSON Export
 
-💾 Persistent Storage
-
+### 💾 Persistent Storage
 * Chat history management
 * Session recovery
 * Report storage
 * Uploaded file tracking
 
-⸻
+---
 
-🏗️ System Architecture
+## 🏗️ System Architecture
 
+```
 User Query
     │
     ▼
@@ -79,11 +75,13 @@ Intent Router
             │
             ▼
       Final Response
+```
 
-⸻
+---
 
-📁 Project Structure
+## 📁 Project Structure
 
+```
 project/
 ├── app/
 │   ├── agents/          # Individual agent logic
@@ -105,87 +103,83 @@ project/
 ├── .env.example
 ├── README.md
 └── logs/
+```
 
-⸻
+---
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 
-Backend
+### Backend
+* **Python**
+* **FastAPI**
+* **LangGraph**
+* **LangChain**
+* **Ollama**
+* **ChromaDB**
+* **SQLite**
+* **WebSockets**
 
-* Python
-* FastAPI
-* LangGraph
-* LangChain
-* Ollama
-* ChromaDB
-* SQLite
-* WebSockets
+### Frontend
+* **React**
+* **TypeScript**
+* **Tailwind CSS**
+* **React Flow**
 
-Frontend
+### AI Models
+* **Qwen3**
+* **Gemma**
+* **DeepSeek**
+* *Any Ollama-compatible model*
 
-* React
-* TypeScript
-* Tailwind CSS
-* React Flow
+---
 
-AI Models
+## ⚙️ Installation
 
-* Qwen3
-* Gemma
-* DeepSeek
-* Any Ollama-compatible model
-
-⸻
-
-⚙️ Installation
-
-Clone Repository
-
+### Clone Repository
+```bash
 git clone https://github.com/amrindersingh1820/ResearchHub-AI-.git
 cd ResearchHub-AI-
+```
 
-Backend Setup
-
+### Backend Setup
+```bash
 python -m venv .venv
 source .venv/bin/activate
-# Windows
+# On Windows use:
 # .venv\Scripts\activate
 pip install -r requirements.txt
+```
 
-Install Ollama Models
-
+### Install Ollama Models
+```bash
 ollama pull qwen3:1.7b
 ollama pull qwen3:4b
+```
 
-Frontend Setup
-
+### Frontend Setup
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
-Run Backend
-
+### Run Backend
+```bash
+# Run from project root
 uvicorn app.main:app --reload
+```
 
-⸻
+---
 
-🌐 Access Application
+## 🌐 Access Application
 
-Frontend:
+* **Frontend**: [http://localhost:5173](http://localhost:5173)
+* **Backend**: [http://localhost:8000](http://localhost:8000)
+* **API Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
 
-http://localhost:5173
+---
 
-Backend:
-
-http://localhost:8000
-
-API Docs:
-
-http://localhost:8000/docs
-
-⸻
-
-📈 Workflow
+## 📈 Workflow
 
 1. User submits a query.
 2. Intent Router determines the task type.
@@ -196,9 +190,9 @@ http://localhost:8000/docs
 7. Reports and chat history are saved.
 8. Follow-up questions use memory context.
 
-⸻
+---
 
-🔒 Key Capabilities
+## 🔒 Key Capabilities
 
 * Multi-Agent Collaboration
 * Context-Aware Memory
@@ -209,9 +203,9 @@ http://localhost:8000/docs
 * Local LLM Support
 * Offline Operation
 
-⸻
+---
 
-🚀 Future Roadmap
+## 🚀 Future Roadmap
 
 * Multi-user authentication
 * Team collaboration workspaces
@@ -221,18 +215,17 @@ http://localhost:8000/docs
 * MCP integration
 * Cloud deployment support
 
-⸻
+---
 
-👨‍💻 Author
+## 👨‍💻 Author
 
-Amrinder Singh
+**Amrinder Singh**  
+*Computer Science & Engineering (Cybersecurity & Machine Learning)*  
 
-Computer Science & Engineering 
+* **GitHub**: [https://github.com/amrindersingh1820](https://github.com/amrindersingh1820)
 
-GitHub: https://github.com/amrindersingh1820
+---
 
-⸻
-
-⭐ Support
+## ⭐ Support
 
 If you find this project useful, consider giving it a star on GitHub and contributing to its development.
