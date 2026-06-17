@@ -1,173 +1,238 @@
-# Production-Grade Multi-Agent AI Research Platform
+🚀 ResearchHubAI
 
-A professional, hackathon-ready multi-agent AI research orchestration system built with **FastAPI**, **LangGraph**, **Ollama (Qwen3)**, **SQLite**, **ChromaDB**, and **React** (with **TypeScript**, **TailwindCSS**, and **React Flow**).
+ResearchHubAI is a modern Multi-Agent AI Research Platform that combines intelligent routing, web research, document analysis, code generation, and report writing into a unified workflow. Built with LangGraph, FastAPI, Ollama, ChromaDB, and React, it enables users to conduct deep research, analyze documents, generate code, and create structured reports through a clean ChatGPT-style interface.
 
----
+⸻
 
-## Key Features
+✨ Features
 
-1. **Multi-Agent Collaboration**: Orchestrated by LangGraph with a 6-agent lifecycle:
-   - **Planner Agent**: Synthesizes the initial goal & research strategy.
-   - **Coordinator Agent**: Decomposes the research topic into 3-5 parallel investigative domains.
-   - **Parallel Research Workers**: Fetch web and RAG context to compile facts for individual domains.
-   - **Fact Checker Agent**: Reconciles contradicting statements, analyzes uncertainties, and scores confidence.
-   - **Critic Agent**: Reviews gaps, weaknesses, and academic rigor.
-   - **Report Writer Agent**: Formats reports into publication-grade Markdown documents.
-2. **Retrieval-Augmented Generation (RAG)**: Integrates local vector storage using ChromaDB and SentenceTransformers (`all-MiniLM-L6-v2`) for document parsing and context retrieval (supporting PDF, CSV, and TXT uploads).
-3. **Web Search Integration**: Abstract Web Research interface with Tavily API support, falling back to a contextual Mock Search engine if no API keys are supplied.
-4. **Memory Management**: Structured logging and long-term research persistence utilizing SQLite.
-5. **Real-Time State Streaming**: Pushes execution status, active agent highlights, and terminal logs in real-time to the UI using FastAPI WebSockets.
-6. **Dynamic Flow Visualizer**: Implements React Flow to illustrate node state changes (Idle -> Running -> Completed) reactively as WS triggers.
-7. **Document Export Engine**: Renders and downloads research outcomes as Markdown, JSON, or professional ReportLab-generated PDF documents.
+🧠 Multi-Agent Architecture
 
----
+* Intent Router Agent
+* Planning Agent
+* Research Agent
+* Writer Agent
+* Coding Agent
+* Assistant Agent
+* Memory Context Agent
 
-## Installation & Setup
+🔍 Research & Retrieval
 
-### Prerequisites
+* Real-time web search integration
+* RAG-powered document retrieval
+* ChromaDB vector storage
+* Context-aware follow-up conversations
+* Multi-source information synthesis
 
-Ensure you have the following installed on your local machine:
-- Python 3.12+
-- Node.js (v18+) & npm
-- Ollama
+📄 Document Intelligence
 
-### Step 1: Model Setup
+* Upload and analyze files
+* Extract insights from documents
+* Detect inconsistencies and contradictions
+* Generate summaries and reports
+* Persistent session memory
 
-Start the Ollama server and pull the Qwen 3 (8B or 4B) model:
+💻 Code Generation
 
-```bash
-# Start Ollama
-ollama serve
+* Generate production-ready code
+* Explain code logic
+* Refactor existing implementations
+* Debug and optimize solutions
 
-# Pull the primary model (runs locally)
-ollama pull qwen3:8b
-```
+⚡ Real-Time Experience
 
-> *Note: If you run a different model size, update the `OLLAMA_MODEL` value in `.env` accordingly (e.g., `qwen2.5:7b` or `qwen3:4b`).*
+* Live token streaming
+* WebSocket updates
+* Progress tracking
+* Agent execution monitoring
 
-### Step 2: Backend Installation
+📊 Report Export
 
-1. Navigate to the project root:
-   ```bash
-   pip install -r requirements.txt
-   ```
-2. Set up environment variables:
-   ```bash
-   cp .env.example .env
-   ```
-3. Edit the `.env` file if you wish to add a custom Port or Tavily API Search key.
+* Markdown Export
+* PDF Export
+* DOCX Export
+* JSON Export
 
-### Step 3: Frontend Installation
+💾 Persistent Storage
 
-1. Navigate to the frontend directory:
-   ```bash
-   cd frontend
-   npm install --legacy-peer-deps
-   ```
+* Chat history management
+* Session recovery
+* Report storage
+* Uploaded file tracking
 
----
+⸻
 
-## How to Run
+🏗️ System Architecture
 
-You need two terminal sessions running simultaneously:
+User Query
+    │
+    ▼
+Intent Router
+    │
+    ├── Research Workflow
+    ├── Coding Workflow
+    ├── Assistant Workflow
+    └── Follow-Up Workflow
+            │
+            ▼
+     Memory Context Agent
+            │
+            ▼
+      Final Response
 
-### Terminal 1: FastAPI Backend
+⸻
 
-From the project root:
-```bash
-uvicorn app.main:app --reload
-```
-The backend API documentation is accessible at `http://localhost:8000/docs`.
+📁 Project Structure
 
-### Terminal 2: React Frontend
-
-From the `frontend/` directory:
-```bash
-npm run dev
-```
-Open `http://localhost:5173` in your browser to interact with the platform.
-
----
-
-## API Endpoints
-
-### 1. Execute Research Run
-- **URL**: `POST /api/research`
-- **Payload**:
-  ```json
-  {
-    "query": "Research the impact of Artificial Intelligence on Cybersecurity.",
-    "session_id": "optional-pre-generated-uuid"
-  }
-  ```
-- **Response**:
-  ```json
-  {
-    "session_id": "4b5d63f9-7e4d-44aa-9c2b-658a1eeabce2",
-    "query": "Research the impact of Artificial Intelligence on Cybersecurity.",
-    "report": "# Executive Summary\n...",
-    "confidence_score": 0.94,
-    "created_at": "2026-06-17T10:45:00.123456"
-  }
-  ```
-
-### 2. Upload Grounding Documents (RAG)
-- **URL**: `POST /api/upload`
-- **Method**: Multipart Form Data
-- **Fields**:
-  - `file`: (Binary File, supporting `.pdf`, `.csv`, `.txt`)
-  - `session_id`: (String, UUID)
-- **Response**:
-  ```json
-  {
-    "filename": "annual_threat_report.pdf",
-    "session_id": "4b5d63f9-7e4d-44aa-9c2b-658a1eeabce2",
-    "chunks": 42,
-    "message": "File successfully ingested. Split into 42 vector chunks."
-  }
-  ```
-
-### 3. Fetch History List
-- **URL**: `GET /api/history`
-- **Response**:
-  ```json
-  [
-    {
-      "id": "4b5d63f9-7e4d-44aa-9c2b-658a1eeabce2",
-      "query": "Research the impact of Artificial Intelligence on Cybersecurity.",
-      "created_at": "2026-06-17T10:45:00.123456",
-      "completed": true
-    }
-  ]
-  ```
-
-### 4. Export Formats
-- **PDF**: `GET /api/report/{session_id}/export/pdf` (returns standard PDF download)
-- **Markdown**: `GET /api/report/{session_id}/export/md` (returns standard markdown download)
-- **JSON**: `GET /api/report/{session_id}/export/json` (returns structured JSON data payload)
-
----
-
-## System Folder Structure
-
-```
 project/
 ├── app/
-│   ├── agents/          # Individual agent logic (planner, researcher, etc.)
-│   ├── graph/           # LangGraph State definitions and workflow compiler
-│   ├── models/          # Pydantic schemas for request/response validation
-│   ├── routes/          # FastAPI routers (endpoints for files, runs, history)
-│   ├── services/        # Database managers, Ollama connect, export builders
-│   ├── utils/           # WebSocket and logger setup
-│   └── main.py          # FastAPI application entrypoint
-├── frontend/            # React Client
+│   ├── agents/          # Individual agent logic
+│   ├── graph/           # LangGraph workflows
+│   ├── models/          # Pydantic schemas
+│   ├── routes/          # FastAPI endpoints
+│   ├── services/        # Database and LLM services
+│   ├── utils/           # Utilities and WebSockets
+│   └── main.py          # FastAPI entrypoint
+│
+├── frontend/
 │   ├── src/
-│   │   ├── components/  # Render components (flow graph, console feed, report viewer)
-│   │   ├── App.tsx      # Main application state and layout manager
-│   │   └── index.css    # Tailwind styles and keyframes definition
+│   │   ├── components/  # UI components
+│   │   ├── App.tsx      # Main application
+│   │   └── index.css    # Styling
 │   └── package.json
-├── requirements.txt     # Python backend dependencies
-├── .env.example         # Template configuration
-├── README.md            # Installation and usage instructions
-└── logs/                # Local text execution log records
-```
+│
+├── requirements.txt
+├── .env.example
+├── README.md
+└── logs/
+
+⸻
+
+🛠️ Tech Stack
+
+Backend
+
+* Python
+* FastAPI
+* LangGraph
+* LangChain
+* Ollama
+* ChromaDB
+* SQLite
+* WebSockets
+
+Frontend
+
+* React
+* TypeScript
+* Tailwind CSS
+* React Flow
+
+AI Models
+
+* Qwen3
+* Gemma
+* DeepSeek
+* Any Ollama-compatible model
+
+⸻
+
+⚙️ Installation
+
+Clone Repository
+
+git clone https://github.com/amrindersingh1820/ResearchHub-AI-.git
+cd ResearchHub-AI-
+
+Backend Setup
+
+python -m venv .venv
+source .venv/bin/activate
+# Windows
+# .venv\Scripts\activate
+pip install -r requirements.txt
+
+Install Ollama Models
+
+ollama pull qwen3:1.7b
+ollama pull qwen3:4b
+
+Frontend Setup
+
+cd frontend
+npm install
+npm run dev
+
+Run Backend
+
+uvicorn app.main:app --reload
+
+⸻
+
+🌐 Access Application
+
+Frontend:
+
+http://localhost:5173
+
+Backend:
+
+http://localhost:8000
+
+API Docs:
+
+http://localhost:8000/docs
+
+⸻
+
+📈 Workflow
+
+1. User submits a query.
+2. Intent Router determines the task type.
+3. Planner creates execution strategy.
+4. Research Agent gathers information.
+5. Writer/Coder generates output.
+6. Results stream in real time.
+7. Reports and chat history are saved.
+8. Follow-up questions use memory context.
+
+⸻
+
+🔒 Key Capabilities
+
+* Multi-Agent Collaboration
+* Context-Aware Memory
+* Retrieval-Augmented Generation (RAG)
+* Real-Time Streaming
+* Session Persistence
+* Report Exporting
+* Local LLM Support
+* Offline Operation
+
+⸻
+
+🚀 Future Roadmap
+
+* Multi-user authentication
+* Team collaboration workspaces
+* Advanced observability dashboard
+* Agent marketplace
+* Voice interaction support
+* MCP integration
+* Cloud deployment support
+
+⸻
+
+👨‍💻 Author
+
+Amrinder Singh
+
+Computer Science & Engineering (Cybersecurity & Machine Learning)
+
+GitHub: https://github.com/amrindersingh1820
+
+⸻
+
+⭐ Support
+
+If you find this project useful, consider giving it a star on GitHub and contributing to its development.
