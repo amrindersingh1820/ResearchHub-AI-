@@ -227,7 +227,7 @@ http://localhost:8000/docs
 
 Amrinder Singh
 
-Computer Science & Engineering (Cybersecurity & Machine Learning)
+Computer Science & Engineering 
 
 GitHub: https://github.com/amrindersingh1820
 
