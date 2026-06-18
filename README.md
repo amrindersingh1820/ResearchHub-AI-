@@ -57,25 +57,7 @@ ResearchHubAI is a modern Multi-Agent AI Research Platform that combines intelli
 
 ---
 
-## 🏗️ System Architecture
-
-```
-User Query
-    │
-    ▼
-Intent Router
-    │
-    ├── Research Workflow
-    ├── Coding Workflow
-    ├── Assistant Workflow
-    └── Follow-Up Workflow
-            │
-            ▼
-     Memory Context Agent
-            │
-            ▼
-      Final Response
-```
+ [🏗️ System Architecture](frontend/src/assets/image3.png)
 
 ---
 
