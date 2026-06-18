@@ -56,6 +56,7 @@ ResearchHubAI is a modern Multi-Agent AI Research Platform that combines intelli
 * Uploaded file tracking
 
 ---
+## 🏗️ System Architecture
 
  ![🏗️ System Architecture](frontend/src/assets/image3.png)
 
@@ -202,10 +203,10 @@ uvicorn app.main:app --reload
 ## 👨‍💻 Author
 
 **Amrinder Singh**  
-*Computer Science & Engineering (Cybersecurity & Machine Learning)*  
+*Computer Science & Engineering*  
 
 * **GitHub**: [https://github.com/amrindersingh1820](https://github.com/amrindersingh1820)
-
+* **LinkedIn**: [www.linkedin.com/in/amrinder-singh-7629b9268](www.linkedin.com/in/amrinder-singh-7629b9268)
 ---
 
 ## ⭐ Support
