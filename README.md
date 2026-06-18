@@ -1,6 +1,6 @@
 # 🚀 ResearchHubAI
 
-![ResearchHubAI Showcase](frontend/src/assets/hero.png)
+![ResearchHubAI Showcase](frontend/src/assets/image2.png)
 
 ResearchHubAI is a modern Multi-Agent AI Research Platform that combines intelligent routing, web research, document analysis, code generation, and report writing into a unified workflow. Built with LangGraph, FastAPI, Ollama, ChromaDB, and React, it enables users to conduct deep research, analyze documents, generate code, and create structured reports through a clean ChatGPT-style interface.
 
