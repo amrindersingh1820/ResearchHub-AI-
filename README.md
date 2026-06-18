@@ -57,7 +57,7 @@ ResearchHubAI is a modern Multi-Agent AI Research Platform that combines intelli
 
 ---
 
- [🏗️ System Architecture](frontend/src/assets/image3.png)
+ ![🏗️ System Architecture](frontend/src/assets/image3.png)
 
 ---
 
